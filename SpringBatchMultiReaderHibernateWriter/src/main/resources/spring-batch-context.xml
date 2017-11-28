@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<import resource = "classpath:context-model.xml" />
+	
+	 <!-- JobRepository and JobLauncher 를 환경 설정/ classes 구성 -->
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean" />
+ 
+    <bean id="jobLauncher"   class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository" />
+    </bean>
+	
+	<bean id = "multiResourceItemReader" class = "org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name = "resources" value = "classpath:csv/ExamResult*.txt" />
+		<property name = "delegate" ref = "flatFileItemReader" />
+	</bean>
+	
+	<!-- ItemReader는 input file로부터 한 줄을 한단계씩 읽는다 -->
+	<bean id = "flatFileItemReader" class = "org.springframework.batch.item.file.FlatFileItemReader" scope = "step">
+		<property name = "lineMapper">
+			<bean class = "org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name = "fieldSetMapper">
+					<!-- Mapper는 기록물 안에 있는 각각의 item(항목)을 POJO 속성에  map시킨다 -->
+					<bean class="com.websystique.springbatch.ExamResultFieldSetMapper" />
+				</property>
+				
+				 <property name="lineTokenizer">
+                    <!-- A tokenizer class는 구체적인 문자에 의해서 input record 안에 있는 항목들을 분활할 때 사용한다 -->
+                    <bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+                        <property name="delimiter" value="|" />
+                    </bean>
+                </property>
+				
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- ItemWriter는 data를 database에 씀 -->
+	<bean id = "databaseItemWriter" class = "org.springframework.batch.item.database.HibernateItemWriter">
+		<property name = "sessionFactory" ref = "sessionFactory" />
+	</bean>
+	
+ 
+    <!-- Optional ItemProcessor to perform business logic/filtering on the input records -->
+    <bean id="itemProcessor" class="com.websystique.springbatch.ExamResultItemProcessor" />
+ 
+    <!-- Optional JobExecutionListener to perform business logic before and after the job -->
+    <bean id="jobListener" class="com.websystique.springbatch.ExamResultJobListener" />
+ 
+	<!--  Actual Job -->
+	<batch:job id = "examResultJob">
+		<batch:step id = "step1">
+			<batch:tasklet transaction-manager = "transactionManager">
+				<batch:chunk reader = "multiResourceItemReader" writer = "databaseItemWriter"
+					processor = "itemProcessor" commit-interval = "10" />
+			</batch:tasklet>
+		</batch:step>
+		<batch:listeners>
+			<batch:listener ref = "jobListener" />
+		</batch:listeners>
+	</batch:job>
+</beans>
