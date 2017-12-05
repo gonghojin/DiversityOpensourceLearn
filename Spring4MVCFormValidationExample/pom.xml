@@ -5,7 +5,7 @@
 	<groupId>com.websystique.springbatch</groupId>
 	<artifactId>Spring4MVCFormValidationExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>Spring4MVCFormValidationExample</name>
 	<url>http://maven.apache.org</url>
@@ -79,8 +79,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.2</version>
 					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
+						<source>1.7</source>
+						<target>1.7</target>
 					</configuration>
 				</plugin>
 				<plugin>

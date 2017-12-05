@@ -1,3 +1,5 @@
+package com.websystique.springbatch.configuration;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.websystique.springmvc")
+@ComponentScan(basePackages = "com.websystique.springbatch")
 public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
  
     /*
