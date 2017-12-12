@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.websystique.springmvc.model.Employee;
+import com.websystique.springmvc.service.EmployeeService;
+
 @Controller
 @RequestMapping("/")
 public class AppController {
-	
 	@Autowired
 	EmployeeService service;
 	
@@ -30,9 +32,10 @@ public class AppController {
 	public String listEmployees(ModelMap model){
 		
 		List<Employee> employees = service.findAllEmployees();
+		
 		model.addAttribute("employees", employees);
 		
-		return "allemployess";
+		return "allemployees";
 	}
 	
 	//employee 등록 Form
@@ -46,7 +49,7 @@ public class AppController {
 	}
 	
 	//employee 등록- db 저장 및 유효성 검사
-	@RequestMapping(value = "{/new"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/new"}, method = RequestMethod.POST)
 	public String saveEmployee(@Valid Employee employee, BindingResult result, ModelMap model){
 		
 		if(result.hasErrors()){
@@ -75,7 +78,7 @@ public class AppController {
 	//employee 업데이트 Form
 	@RequestMapping(value = {"/edit-{ssn}-employee"}, method = RequestMethod.GET)
 	public String editEmployee(@PathVariable String ssn, ModelMap model){
-		Employee employee = service.finEmployeeBySsn(ssn);
+		Employee employee = service.findEmployeeBySsn(ssn);
 		model.addAttribute("employee", employee);
 		model.addAttribute("edit", true);
 		return "registration";
@@ -101,7 +104,7 @@ public class AppController {
 	//employee 삭제
 	@RequestMapping(value = {"/delete-{ssn}-employee"}, method = RequestMethod.GET)
 	public String deleteEmployee(@PathVariable String ssn){
-		service.deleteEmployee(ssn);
+		service.deleteEmployeeBySsn(ssn);
 		return "redirect:/list";
 	}
 }
