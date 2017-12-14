@@ -47,20 +47,21 @@
             <version>2.4.1</version>
         </dependency>
  
-        <!-- Needed for PDF View -->
-        <dependency>
-            <groupId>com.lowagie</groupId>
-            <artifactId>itext</artifactId>
-            <version>4.2.1</version>
-        </dependency>
-         
+        <!-- Needed for PDF View 
+		        <dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		    <version>4.2.1</version>
+		</dependency>
+         	경로 없어진 듯 내부 jar 넣기
+         -->
         <!-- Needed for XLS View -->     
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>3.10-beta2</version>
         </dependency>
- 
+ 		
         <!-- Servlet dependencies -->
         <dependency>
             <groupId>javax.servlet</groupId>
