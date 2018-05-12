@@ -6,7 +6,7 @@
 ##### 스프링 기초 배우기 ( http://websystique.com/page/13/)
 1. SpringHibernateExample
 > SpringBactchXmlToCsv
-*. SpringBatchQuartzExample
-*. SpringBatchMultiReaderHibernateWriter
-*. SpringBatchCsvToXml
-*. Spring4MVCHelloWorldDemo 
+* SpringBatchQuartzExample
+* SpringBatchMultiReaderHibernateWriter
+* SpringBatchCsvToXml
+* Spring4MVCHelloWorldDemo 
