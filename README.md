@@ -10,3 +10,4 @@
 * SpringBatchMultiReaderHibernateWriter
 * SpringBatchCsvToXml
 * Spring4MVCHelloWorldDemo 
+* Spring4AutoScanning
