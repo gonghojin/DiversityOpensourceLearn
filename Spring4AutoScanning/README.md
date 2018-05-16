@@ -12,3 +12,6 @@ Spring @Value annoation은 필드 또는 메소드 위에 구체적인 표현을
   • Maven 3<br>
   • JDK 1.6<br>
   • Eclipse JUNO Service Release 2
+
+원문 : http://websystique.com/page/13/
+--------------------------------------
