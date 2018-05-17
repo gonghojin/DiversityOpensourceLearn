@@ -74,3 +74,43 @@ public class HibernateConfiguration {
         해당 항목들은 Bean method인 transactionManager에 injected 된다.
         transactionManager은 최종적으로 sessionFactory에 의해서 생성되는 sessions을 위한 transaction support(지원)를 제공할 것이다.
      **/
+
+    /** XML 환경설정과 비교
+
+     <context:property-placeholder location="classpath:application.properties" />
+
+     <context:component-scan  base-package="com.websystique.spring" />
+
+     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+         <property name="driverClassName" value="${jdbc.driverClassName}" />
+         <property name="url" value="${jdbc.url}"/>
+         <property name="username" value="${jdbc.username}" />
+         <property name="password" value="${jdbc.password}"/>
+     </bean>
+
+     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+         <property name="dataSource" ref="dataSource"/>
+         <property name="packagesToScan">
+             <list>
+                <value>com.websystique.spring.model</value>
+             </list>
+         </property>
+         <property name="hibernateProperties">
+             <props>
+                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                 <prop key="hibernate.show_sql">${hibernate.show_sql:false}</prop>
+                 <prop key="hibernate.format_sql">${hibernate.format_sql:false}</prop>
+             </props>
+         </property>
+     </bean>
+
+     <bean id="transactionManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+         <property name="sessionFactory" ref="sessionFactory" />
+     </bean>
+
+     <bean id="persistenceExceptionTranslationPostProcessor"
+     class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+     **/
