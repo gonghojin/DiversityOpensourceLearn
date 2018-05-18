@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="activeMqMessaging" class="com.gongdel.domain.ActiveMQMessaging" />
+
+    <bean id="communication" class="com.gongdel.spring.Communication">
+        <property name="messaging">
+            <ref bean="activeMqMessaging" />
+        </property>
+    </bean>
+</beans>
+
+<!--
+    위의 XML 환경설정에서, Spring은 'activeMqMessaging' bean을 setter dependency injection을 사용하는 'communication' bean에 inject할 것이다.
+    Communication's setter method[setMessaging(Messaging messaing)]은 property 설정을 위해 호출될 것이다.
+
+-->

@@ -3,7 +3,7 @@
 (+ 마크업 배우기 : https://gist.github.com/ihoneymon/652be052a0727ad59601)
 -------------------------------------------------------------------------
 
-##### 스프링 기초 배우기 ( http://websystique.com/page/13/)
+##### 스프링 기초 배우기 (원문 : http://websystique.com/page/13/)
 1. SpringHibernateExample
 > SpringBactchXmlToCsv
 * SpringBatchQuartzExample
@@ -11,3 +11,7 @@
 * SpringBatchCsvToXml
 * Spring4MVCHelloWorldDemo 
 * Spring4AutoScanning
+* Spring4Hibernate
+* Spring4Profiles
+* Spring4PropertySource
+* SpringDependencyInject
