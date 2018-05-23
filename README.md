@@ -4,8 +4,8 @@
 -------------------------------------------------------------------------
 
 ##### 스프링 기초 배우기 (원문 : http://websystique.com/page/13/)
-1. SpringHibernateExample
-> SpringBactchXmlToCsv
+* SpringHibernateExample
+* SpringBactchXmlToCsv
 * SpringBatchQuartzExample
 * SpringBatchMultiReaderHibernateWriter
 * SpringBatchCsvToXml
@@ -16,3 +16,4 @@
 * Spring4PropertySource
 * SpringDependencyInject
 * SpringBeanAutowiringUsingXml
+* SpringDependencyInjectionAnnotation
