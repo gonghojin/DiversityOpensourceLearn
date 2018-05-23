@@ -17,3 +17,4 @@
 * SpringDependencyInject
 * SpringBeanAutowiringUsingXml
 * SpringDependencyInjectionAnnotation
+* SpringSchedulingXmlExample
