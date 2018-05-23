@@ -15,3 +15,4 @@
 * Spring4Profiles
 * Spring4PropertySource
 * SpringDependencyInject
+* SpringBeanAutowiringUsingXml

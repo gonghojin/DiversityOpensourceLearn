@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--byName example -->
+    <bean id="application" class="com.gongdel.spring.domain.Application" autowire="byName" />
+
+    <bean id="applicationUser" class="com.gongdel.spring.domain.ApplicationUser">
+        <property name="name" value="superUser" />
+    </bean>
+    <!--
+    주목할 점은 autowire="byName" 속성이다. 우리는 어디에도 applicationUser bean을 참조하고 있지 않다.
+    'application' class는 Spring context에 정의된 bean과 일치하는 명칭인 'applicationUser' 속성을 가지고 있기 때문에, 해당 bean은 자동으로 wired 되어질 것이다.
+
+    결과값 : Application Details : Application{applicationUser=ApplicationUser{name='superUser'}}
+    -->
+
+
+
+    <!-- byType example -->
+    <bean id="employee" class="com.gongdel.spring.domain.Employee" autowire="byType" />
+
+    <bean id="employeeAddress" class="com.gongdel.spring.domain.EmployeeAddress">
+        <property name="street" value="112/223,SantaVila" />
+        <property name="city" value="Nebraska" />
+    </bean>
+    <!--
+    주목할 점은 autowired="byType" 속성이다. 우리는 어디에도 EmployeeAddress bean을 참조하고 있지 않다.
+    'employee' class는 Spring context에 정의된 bean과 일치하는 타입인 'EmployeeAddress' 타입을 가지고 있기 때문에, 해당 bean은 자동으로 wired 되어질 것이다
+
+    결과값 : Employee Details : Employee{address=EmployeeAddress{street='112/223,SantaVila', city='Nebraska'}}
+    -->
+
+
+
+    <!-- constructor exameple -->
+    <bean id="performer" class="com.gongdel.spring.domain.Performer" autowire="constructor" />
+
+    <bean id="instrument" class="com.gongdel.spring.domain.Instrument" >
+        <property name="name" value="PIANO" />
+    </bean>
+    <!--
+    주목할 점은 autowired="constructor" 속성이다. 우리는 어디에도 Instrument bean을 참조하고 있지 않다
+    'performer' class는 Spring context에 정의된 bean과 일치하는 bean인 'Instrument' 인자값을 가지고 있기 때문에, 해당 bean은 자동으로 wired 되어질 것이다
+
+    결과값 : Performer Details : Performer{instrument=Instrument{name='PIANO'}}
+    -->
+
+
+    <!-- default example (autowire="no") -->
+    <bean id="driver" class="com.gongdel.spring.domain.Driver" autowire="no">
+        <property name="license" ref="license" />
+    </bean>
+
+    <bean id="license" class="com.gongdel.spring.domain.License">
+        <property name="number" value="123456ABCD" />
+    </bean>
+    <!--
+    주목할 점은 autowired="no" 속성이다. 이 autowire 속성은 bean을 wiring할 때 더 이상 영향이 없다.(힘께 제거해도 됨)
+    주목할 점 또 한 가지는 구체적인 bean을 참조하기 위한 ref 속성을 설정해야한다. 만약 하지 않는다며나, driver의 license 속성은 null일 것이다.
+
+    결과값 : Driver Details : Driver{license=License{number='123456ABCD'}}
+    -->
+</beans>
+
