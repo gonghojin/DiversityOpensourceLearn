@@ -1,4 +1,4 @@
-package com.gongdel.domain;
+package com.gongdel.spring.domain;
 
 public interface Messaging {
 

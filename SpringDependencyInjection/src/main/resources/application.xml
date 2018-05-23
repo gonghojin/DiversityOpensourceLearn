@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="activeMqMessaging" class="com.gongdel.domain.ActiveMQMessaging" />
+    <bean id="activeMqMessaging" class="com.gongdel.spring.domain.ActiveMQMessaging" />
 
     <bean id="communication" class="com.gongdel.spring.Communication">
         <property name="messaging">

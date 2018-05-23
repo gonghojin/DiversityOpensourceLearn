@@ -1,5 +1,7 @@
 package com.gongdel.spring;
 
+import com.gongdel.spring.domain.Messaging;
+
 public class Communication {
 
     private Messaging messaging;
