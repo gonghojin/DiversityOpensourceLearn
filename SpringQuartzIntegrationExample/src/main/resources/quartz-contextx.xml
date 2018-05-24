@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bean="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean:component-scan base-package="com.gongdel.spring" />
+
+    <!-- Quartz를 사용하는 Spring 안에 Job을 설정하는 방법은 2 가지가 있다 -->
+
+    <!-- 1. MethodInvokingJobDetailFactoryBean을 사용하는 방법 -->
+    <!-- 단지 특정 bean에 method를 포함하는 것이 필요할 때 사용하자. 이 방법이 두 가지 중 가장 간단하다 -->
+    <!-- 밑의 job 환경설정은 bean myJobBean(간단한 POJO)의 printMessage method를 간단하게 포함한다. -->
+    <bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myBean" />
+        <property name="targetMethod" ref="printMessage" />
+    </bean>
+
+    <!-- 2. JobDetailFactoryBean을 사용하는 방법 -->
+    <!-- 더 진보된 설정이 필요할 때나 job에 데이터를 넘겨야할 때 더 유연하다 -->
+    <!--
+        jobClass는 QuartzJobBean(Quartz job interface 구현체)을 상속한 class를 참조함. 이 job이 호출됐을 때, executeInternal method가 호출됨
+        jobDataMap은 기본 job bean에 어떠한 data를 보내기 위한 기회를 제공한다. 이 경우에는 ScheduledJob에 의해 사용되어지는 bean 'anotherBean'을 보낸다.
+    -->
+    <bean name="complexJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.gongdel.spring.quartz.ScheduledJob" />
+        <property name="jobDataMap">
+            <map>
+                <entry key="anotherBean" value-ref="anotherBean" />
+            </map>
+        </property>
+        <property name="durability" value="true" />
+    </bean>
+
+</beans>

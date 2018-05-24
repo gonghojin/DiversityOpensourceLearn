@@ -19,3 +19,4 @@
 * SpringDependencyInjectionAnnotation
 * SpringSchedulingXmlExample
 * SpringSchedulingAnnotation
+* SpringQuartzIntergrationExample
