@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="com.gongdel.spring.scheduling" />
+
+
+    <!-- task:scheduled는 새로운 task를 정의한다. 'ref' 속성은 명시된 시간 조건에 따라 호출되어질 method(attribute 'method'에 의해서 참조)를 가지고 있는 bean을 참조한다.
+         fixed-delay는 milliseconds 단위의 시간(첫번째 task의 완성과 다음 작업 시작의 사이)을 명시한다.
+         scheduler의 주기는 다른 방법으로도 정의할 수 있다
+
+         ex) <task:scheduled-tasks scheduler="myScheduler">
+                <task:scheduled ref="myBean" method="printMessage" fixed-delay="5000" initial-delay="1000" />
+                <task:scheduled ref="Bean2" method="method2" fixed-rate="5000" />
+                <task:scheduled ref="Bean3" method="method3" cron="*/5 * * * * MON-FRI"/>
+             </task:scheduled-tasks>
+
+        위의 환경설정 중
+        initial-delay : 첫번째 method의 실행 전에 대기하기 위한 시간을 millisecond 단위로 명시한다.
+        fixed-rate :  method를 완료하는 데 걸리는 시간과 관계없이 각각의 method 시작 사이의 밀리 초 수를 지정합니다.
+        cron : 더 미세한 task 실행 제어기능을 제공한다. 여기서는 task3를 월~금까지(평일만) 5초마다 실행되도록 설정
+    -->
+    <task:scheduled-tasks scheduler="myScheduler">
+        <task:scheduled ref="myBean" method="printMessage" fixed-delay="5000" />
+    </task:scheduled-tasks>
+
+
+
+    <!-- 미래에 어떤 시점에서, 어떤 task가 실행되게 하기 위해서 scheduler 자체를 환경설정하는 것이 필요하다.
+         밑의 환경설정은 단 하나의 thread를 가지는 기본적인 thread pool과 함께 생성한다.
+         완료하려면 오랜시간이 걸릴 수 있는 task들을 가지고 있는 경우나 빈번한 사용이 필요한 경우,
+         각각의 task들을 분리된 thread 안에서 다루기 위해 명시된 pool-size를 가진 thread-pool을 설정할 수 있다.
+         ex) <task:scheduler id="myScheduler" pool-size="10" />
+    -->
+    <task:scheduler id="myScheduler" />
+</beans>
