@@ -18,3 +18,4 @@
 * SpringBeanAutowiringUsingXml
 * SpringDependencyInjectionAnnotation
 * SpringSchedulingXmlExample
+* SpringSchedulingAnnotation
