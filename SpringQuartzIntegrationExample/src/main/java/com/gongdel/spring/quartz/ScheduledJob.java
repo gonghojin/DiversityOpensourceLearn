@@ -1,19 +1,20 @@
 package com.gongdel.spring.quartz;
 
+import com.gongdel.spring.scheduling.AnotherBean;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 public class ScheduledJob extends QuartzJobBean {
 
-    private AnnotherBean annotherBean;
+    private AnotherBean annotherBean;
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         annotherBean.printAnotherMessage();
     }
 
-    public void setAnnotherBean(AnnotherBean annotherBean) {
+    public void setAnnotherBean(AnotherBean annotherBean) {
         this.annotherBean = annotherBean;
     }
 }
