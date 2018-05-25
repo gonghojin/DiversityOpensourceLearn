@@ -20,3 +20,4 @@
 * SpringSchedulingXmlExample
 * SpringSchedulingAnnotation
 * SpringQuartzIntergrationExample
+* SpringJsonBinding(Object mapping)
