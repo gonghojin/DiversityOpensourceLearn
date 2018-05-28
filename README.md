@@ -21,4 +21,3 @@
 * SpringSchedulingAnnotation
 * SpringQuartzIntergrationExample
 * SpringJsonBinding(Object mapping)
-* SpringHibernateAddingTestNG
