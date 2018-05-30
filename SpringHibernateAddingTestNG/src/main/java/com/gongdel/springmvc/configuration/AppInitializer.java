@@ -1,6 +1,9 @@
 package com.gongdel.springmvc.configuration;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -20,6 +23,13 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         return new String[] { "/" };
     }
 
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setForceEncoding(true);
+        encodingFilter.setEncoding("UTF-8");
+        return new Filter[]{encodingFilter};
+    }
 }
 /**
        위의 내용은 front-controller 'DispatherServler'을 사용하기 때문에 web.xml의 내용과 유사하다.

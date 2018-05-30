@@ -13,7 +13,11 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     private final Class<T> persistentClass;
 
     public AbstractDao() {
+                                                                //this.getClass() -구현체(ex: EmployeeDaoImpl
         this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
+        // this.getClass() - EmployeeDaoImpl(구현체)
+        // ~.getGenericSuperclass() - AbstractDao<java.lang.Integer, com.gongdel.springmvc.model.Employee>(슈퍼클래스)
+        // ~ getActualTypeArguments()[1] -  Employee
     }
 
     @Autowired

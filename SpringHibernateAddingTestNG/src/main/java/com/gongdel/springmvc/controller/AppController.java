@@ -33,8 +33,7 @@ public class AppController {
         List<Employee> employees = service.findAllEmployees();
         model.addAttribute("employees", employees);
 
-        /*return "registration";*/
-        return "test";
+        return "registration";
     }
 
     // add Employee - GET
