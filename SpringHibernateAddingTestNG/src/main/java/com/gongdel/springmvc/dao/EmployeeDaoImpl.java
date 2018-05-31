@@ -23,7 +23,7 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements E
 
     @Override
     public void deleteEmployeeBySsn(String ssn) {
-        Query query = getSession().createSQLQuery("delete from Employee where ssn= = :ssn");
+        Query query = getSession().createSQLQuery("delete from Employee where ssn=:ssn");
         query.setString("ssn", ssn);
         query.executeUpdate();
     }
