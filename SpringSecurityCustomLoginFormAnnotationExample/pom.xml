@@ -46,6 +46,12 @@
             <artifactId>spring-security-config</artifactId>
             <version>${springsecurity.version}</version>
         </dependency>
+        <!-- 옵션 : view layer에서 로그인된 유저의 권한에 따라 보이거나 보이지 않게 하는 부분 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
