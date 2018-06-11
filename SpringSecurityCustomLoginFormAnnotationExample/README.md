@@ -6,6 +6,7 @@ Spring Security 4 Hello World Annotation + xml example 예제에서, 우리가 f
 그후, 이 **'/login** URL을 우리에 의해서 정의된 login view를 리턴하는 Spring MVC Contrlloer에 매핑한다.<br>
 로그인을 시도할 떄, 특정된 logion view가 표시된다. login 기능의 나머지는 동일하게 유지된다.<br>
 
+<1회차><br>
 Following technologies being used:<br>
 •Spring 4.1.6.RELEASE<br>
 •Spring Security 4.0.1.RELEASE<br>
@@ -14,5 +15,12 @@ Following technologies being used:<br>
 •Tomcat 8.0.21<br>
 •Eclipse JUNO Service Release 2<br>
 
+원문 : <br>
+기본 시큐리티:  http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
+    
+<2회차><br>
+•Hibernate 4.3.6.Final<br>
+•MySQL Server 5.6<br>
+원문 :<br>
+Hibernate : http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/
 
-원문 : http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/

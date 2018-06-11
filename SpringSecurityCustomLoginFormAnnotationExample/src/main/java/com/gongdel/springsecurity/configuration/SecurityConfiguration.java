@@ -1,22 +1,43 @@
 package com.gongdel.springsecurity.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+   /* in-memory authentication - database 저장 x
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("dba").password("root123").roles("ADMIN", "DBA");
+    }*/
+
+    /** Feat : hibernate
+     * Hibernate 사용 database 저장
+     *
+     *  'org.springframework.security.core.userdetails.UserDetailsService' 구현을 통해서
+     *   모든 자격은 database에 저장되고, Spring Security에 접근 할 수 있다.
+     *   우리는 결국 database의 data에 접근하기 위해 정의된 userService로, 완전한 transactional user를 사용하는 'UserDetailsService'의 구현체를 제공한다.
+     *
+     */
+
+    @Autowired
+    @Qualifier("customUserDetailsService")
+    UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
