@@ -36,16 +36,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Autowired
+    CustomSuccessHandler customSuccessHandler;
+
+    @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/home").permitAll()
+        http.authorizeRequests()
+
+                /*
+                   <1~2회차>
+                .antMatchers("/", "/home").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 .and().formLogin().loginPage("/login")
+                */
+                .antMatchers("/", "/home").access("hasRole('USER')")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+                .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)// custom logic에 기반된 redirection 역할
+                                                                                            // [USER/ADMIN/DBA] 권한에 따라 redirect URL 구분
                 .usernameParameter("ssoId").passwordParameter("password")
                 .and().csrf()
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");

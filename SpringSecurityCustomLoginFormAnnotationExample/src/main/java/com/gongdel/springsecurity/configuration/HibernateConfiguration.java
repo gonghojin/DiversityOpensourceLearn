@@ -28,8 +28,8 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setHibernateProperties(hibernateProperties());
         sessionFactory.setPackagesToScan(new String[]{"com.gongdel.springsecurity.model"});
+        sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
     }

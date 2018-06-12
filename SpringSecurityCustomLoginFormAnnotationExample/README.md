@@ -22,5 +22,13 @@ Following technologies being used:<br>
 •Hibernate 4.3.6.Final<br>
 •MySQL Server 5.6<br>
 원문 :<br>
-Hibernate : http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/
+Hibernate : http://websystique.com/spring-security/spring-security-4-hibernate-annotation-example/<br>
 
+<3회차><br>
+3회차에서는 Hibernate 사용하는 SpringSecurity4에서 권한 기반 login 사용을 어떻게 하는 지 본다.
+이는 user가 그들의 관련된 권한에 따라서 다른 URL에 redirect 되는 것을 의미한다.
+<br>
+3회차에서는 2회차에서 했던 Hibernate 기능 추가를 완성하며, 권한 기반 login 기능을 추가한다.(몇 가지를 제외하고 2회차와 99% 비슷)
+
+원문 : <br>
+권한 기반 로그인 - http://websystique.com/spring-security/spring-security-4-hibernate-role-based-login-example/
