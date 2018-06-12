@@ -31,6 +31,11 @@ public class User {
     @Column(name = "STATE", nullable = false)
     private String state = State.ACTIVE.getState();
 
+    /**
+     * 즉시 로딩 : Entity를 조회할 때 연관된 Entity도 함께 조회한다. fetch = FetchType.EAGER
+     * 자연 로딩 : Entity를 조회할 때 연관된 Entity도 실제 사용할 때 조회한다. fetch = FetchType.lAZY
+     *
+     */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "APP_USER_USER_PROFILE",
             joinColumns = {@JoinColumn(name = "USER_ID")},
