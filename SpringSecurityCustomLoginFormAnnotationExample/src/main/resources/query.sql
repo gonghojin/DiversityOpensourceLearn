@@ -78,3 +78,14 @@ INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
 INSERT INTO APP_USER_USER_PROFILE (user_id, user_profile_id)
   SELECT user.id, profile.id FROM app_user user, user_profile profile
   where user.sso_id='kenny' and profile.type='DBA';
+
+<!--5회차 추가 - 암호 관련 데이터-->
+<!-- 이 테이블은 username, rememberme 활성시간인 last_used timestamp, token, series 정보를 포함한다.
+    이 정보는 Spring Bcrypt 구현의 내장품이다. 즉, 자체적으로 이 테이블을 mapping함 -->
+CREATE TABLE persistent_logins (
+    username VARCHAR(64) NOT NULL,
+    series VARCHAR(64) NOT NULL,
+    token VARCHAR(64) NOT NULL,
+    last_used TIMESTAMP NOT NULL,
+    PRIMARY KEY (series)
+);

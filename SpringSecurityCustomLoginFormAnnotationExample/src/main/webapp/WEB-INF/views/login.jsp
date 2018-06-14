@@ -42,6 +42,11 @@
                     <input type="password" class="form-control" id="password" name="password"
                            placeholder="Enter Password" required>
                 </div>
+                <div class="input-group input-sm">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="rememberme" name="remember-me"> Remember Me</label>
+                    </div>
+                </div>
                 <!-- CSRF attacks으로 보호하기 위해서 필수적인 부분-->
                 <!-- 보다시피 CSRF parameters는 JSP에서 EL Expressions를 사용하여 접근한다. -->
                 <!-- 추가적으로, jsp 맨위에 EL expressions를 강요하는 것이 더 낫다. Sevlet 2.4 이상은 기본적으로 포함되지만, 미만은 포함이 안되기 떄문에 EL 표현 인식 못함 -->

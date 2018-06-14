@@ -33,7 +33,7 @@ Hibernate : http://websystique.com/spring-security/spring-security-4-hibernate-a
 원문 : <br>
 권한 기반 로그인 - http://websystique.com/spring-security/spring-security-4-hibernate-role-based-login-example/<br>
 
-<4회차><br> - Spring Security 4 Hibernate Password Encoder Bcrypt Example<br>
+<4회차>- Spring Security 4 Hibernate Password Encoder Bcrypt Example<br>
 4회차에서는 **BCryptPasswordEncoder**를 사용하여 Password Encoding을 한다.<br>
 보안을 중요 시 하는 application은 **절대** 암호를 일반 text format으로 저장하면 안된다. 암호는 항상 안전한 hashing algorithm을 사용하여 encoded 되어야 한다.<br>
 적절한 SALT와 결합하면 암호를 encoding 하는 데 좋은 선택이 될 수 있는 SHA 또는 MD5와 같은 많은 표준 알고리즘이 있다.<br>
@@ -45,5 +45,16 @@ application에서 어디에서 Password Encoding이 필요할까?<br>
 2. 새로운 유저를 생성하거나 존재하는 유저의 암호를 업데이트하는 동안, database에 저장하거나 업데이트하기 전에 입력 암호를 Encode한다.<br>
 
 원문 : <br>
-암호 인코딩 - http://websystique.com/spring-security/spring-security-4-password-encoder-bcrypt-example-with-hibernate/
+암호 인코딩 - http://websystique.com/spring-security/spring-security-4-password-encoder-bcrypt-example-with-hibernate/<br>
 
+<5회차> - Spring Security 4 Remember Me Example with Hibernate<br>
+5회차에서는 security에서 **Remember-Me authentication** 사용을 보여준다.<br>
+**Remember-me** or **persistent-login authentication**에서, application은 session 사이에 user의 id를 기억한다.<br>
+기본적으로 로그인하는 동안, 사용자가 Remember-me 지원을 요청하면 application은 **브라우저에 cookie를 보낸다.**<br>
+이 cookie는 브라우저 측에 저장되고 일정한 기간동안(정의된 cookie 수명에 맞게) 유지된다. 우리가 다음번에 application에 접근하려할 때, 브라우저는 cookie(유효하다면)를 찾는다.<br>
+그리고 userid/password를 제공하는 절차없이 자동적으로 로그인 된다.<br>
+Spring Security는 Remember-Me를 위한 두 가지 구현체를 제공한다.<br>
++ 간단한 Hash 기반 Token 접근 : cookie 기반 token의 보안을 유지하기 위해서 hashing을 사용한다.<br>
++ 영속성 Token 접근 : 발생된 token을 저장하기 위해서 database 또는 다른 영속 저장 메커니즘을 사용한다.(이 예제에서 사용)<br>
+원문 : <br>
+암호 기억(cookie) - http://websystique.com/spring-security/spring-security-4-remember-me-example-with-hibernate/
