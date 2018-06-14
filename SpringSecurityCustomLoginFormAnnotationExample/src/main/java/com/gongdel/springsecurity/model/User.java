@@ -1,6 +1,8 @@
 package com.gongdel.springsecurity.model;
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,28 +15,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotEmpty
     @Column(name = "SSO_ID", unique = true, nullable = false)
     private String ssoId;
 
+    @NotEmpty
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @NotEmpty
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
+    @NotEmpty
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
+    @NotEmpty
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
+    @NotEmpty
     @Column(name = "STATE", nullable = false)
     private String state = State.ACTIVE.getState();
 
     /**
      * 즉시 로딩 : Entity를 조회할 때 연관된 Entity도 함께 조회한다. fetch = FetchType.EAGER
      * 자연 로딩 : Entity를 조회할 때 연관된 Entity도 실제 사용할 때 조회한다. fetch = FetchType.lAZY
-     *
      */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "APP_USER_USER_PROFILE",

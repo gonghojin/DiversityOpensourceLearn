@@ -7,4 +7,5 @@ public interface UserDao {
 
     User findBySSO(String sso);
 
+    void save(User user);
 }

@@ -6,7 +6,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
-public class UserDaoImp extends AbstractDao<Integer, User> implements UserDao {
+public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
     @Override
     public User findById(int id) {
@@ -19,5 +19,10 @@ public class UserDaoImp extends AbstractDao<Integer, User> implements UserDao {
         criteria.add(Restrictions.eq("ssoId", sso));
 
         return (User) criteria.uniqueResult();
+    }
+
+    @Override
+    public void save(User user) {
+        persist(user);
     }
 }
