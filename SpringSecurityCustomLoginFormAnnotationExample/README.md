@@ -57,4 +57,9 @@ Spring Security는 Remember-Me를 위한 두 가지 구현체를 제공한다.<b
 + 간단한 Hash 기반 Token 접근 : cookie 기반 token의 보안을 유지하기 위해서 hashing을 사용한다.<br>
 + 영속성 Token 접근 : 발생된 token을 저장하기 위해서 database 또는 다른 영속 저장 메커니즘을 사용한다.(이 예제에서 사용)<br>
 원문 : <br>
-암호 기억(cookie) - http://websystique.com/spring-security/spring-security-4-remember-me-example-with-hibernate/
+암호 기억(cookie) - http://websystique.com/spring-security/spring-security-4-remember-me-example-with-hibernate/<br>
+
+<6회차> - Spring 4 MVC+Hibernate Many-to-many JSP Example with annotation<br>
+등록, 삭제, 수정 기능 추가 및 Many to Many association 설명<br>
+원문 : <br>
+http://websystique.com/springmvc/springmvc-hibernate-many-to-many-example-annotation-using-join-table/
