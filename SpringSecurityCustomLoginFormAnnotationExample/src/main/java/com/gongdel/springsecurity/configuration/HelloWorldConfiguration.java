@@ -1,15 +1,12 @@
 package com.gongdel.springsecurity.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -48,27 +45,6 @@ public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(roleToUserProfileConverter);
-    }
-
-    /**
-     * 내부화된 property files에서 validation/error message를 찾기 위해서 messageSource를 설정한다.
-     */
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages");
-        return messageSource;
-    }
-
-    /**
-     *  선택사항. @PathVariable 안에서 '.' 처리할 때 필요하다.
-     *  그렇지 않으면 @PathVariable argument(인수) 안의 마지막 '.' 뒤에 있는 모든 것들을 무시한다.
-     *  일종의 버그로 알려져있음[spring 4.1.7에서는 여전히 존재]
-     */
-
-    @Override
-    public void configurePathMatch(PathMatchConfigurer matcher) {
-        matcher.setUseRegisteredSuffixPatternMatch(true);
     }
 }
 
