@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -85,8 +85,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3 control-lable" for="userProfiles">Roles</label>
                 <div class="col-md-7">
-                    <form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type"
-                                 class="form-control input-sm"/>
+                    <form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm"/>
                     <div class="has-error">
                         <form:errors path="userProfiles" class="help-inline"/>
                     </div>
@@ -96,16 +95,8 @@
 
         <div class="row">
             <div class="form-actions floatRight">
-                <input type="submit" value="Register" class="btn btn-primary btn-sm"> or <a
-                    href="<c:url value='/admin' />">Cancel</a>
+                <input type="submit" value="Register" class="btn btn-primary btn-sm"> or <a href="<c:url value='/admin' />">Cancel</a>
             </div>
-        </div>
-        <c:if test="${edit}">
-            <div>
-            <span class="well pull-left">
-                <a href="<c:url value='/upload/add-document-${user.id}' />">Click here to upload/manage your documents</a>
-            </span>
-        </c:if>
         </div>
     </form:form>
 </div>
