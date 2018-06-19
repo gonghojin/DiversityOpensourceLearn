@@ -89,3 +89,18 @@ CREATE TABLE persistent_logins (
     last_used TIMESTAMP NOT NULL,
     PRIMARY KEY (series)
 );
+
+<!-- 7회차 추가 - 파일등록 관련 데이터-->
+<!-- 포인트는 'content longblob' 컬럼이다. 우리는 이 컬럼에 binary format의 file을 저장한다.
+<!-- datatype 'BLOB'는 Binary Large Object를 의미한다. 이는 다양한 data 양을 저장할 수 있는데 4 가지 타입으로 분류된다
+    TINYBLOB, BLOB, MEDIUMBLOB, 'LONGBLOB' -->
+create table USER_DOCUMENT(
+   id BIGINT NOT NULL AUTO_INCREMENT,
+   user_id BIGINT NOT NULL,
+   name  VARCHAR(100) NOT NULL,
+   description VARCHAR(255) ,
+   type VARCHAR(100) NOT NULL,
+   content longblob NOT NULL,
+   PRIMARY KEY (id),
+   CONSTRAINT document_user FOREIGN KEY (user_id) REFERENCES APP_USER (id) ON UPDATE CASCADE ON DELETE CASCADE
+);

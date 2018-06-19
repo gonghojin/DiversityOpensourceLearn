@@ -62,4 +62,8 @@ Spring Security는 Remember-Me를 위한 두 가지 구현체를 제공한다.<b
 <6회차> - Spring 4 MVC+Hibernate Many-to-many JSP Example with annotation<br>
 등록, 삭제, 수정 기능 추가 및 Many to Many association 설명<br>
 원문 : <br>
-http://websystique.com/springmvc/springmvc-hibernate-many-to-many-example-annotation-using-join-table/
+http://websystique.com/springmvc/springmvc-hibernate-many-to-many-example-annotation-using-join-table/<br>
+
+<7회차> - Spring MVC 4 FileUpload-Download Hibernate+MySQL Example<br>
+원문 : <br>
+http://websystique.com/springmvc/spring-mvc-4-fileupload-download-hibernate-example/
