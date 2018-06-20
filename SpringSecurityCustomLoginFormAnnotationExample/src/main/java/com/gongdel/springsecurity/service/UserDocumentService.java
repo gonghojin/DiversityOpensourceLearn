@@ -10,7 +10,7 @@ public interface UserDocumentService {
 
     List<UserDocument> findAll();
 
-    List<UserDocument> findAllById(int id);
+    List<UserDocument> findAllByUserId(int id);
 
     void saveDocument(UserDocument document);
 

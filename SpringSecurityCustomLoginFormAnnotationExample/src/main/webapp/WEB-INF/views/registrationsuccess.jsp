@@ -19,8 +19,12 @@
     Confirmation message : ${success}
     <br>
     Would you like to <a href="<c:url value='/newUser' />">Add More Users</a>?
-    <br/>
+    <br>
     Go to <a href="<c:url value='/admin' />">Admin Page</a> OR <a href="<c:url value="/logout" />">Logout</a>
+    <br>
+    <span class="well pull-left">
+            <a href="<c:url value='/add-document-${user.id}' />">Click here to upload/manage your documents</a>
+    </span>
 </div>
 
 </body>

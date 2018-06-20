@@ -26,7 +26,7 @@ public class UserDocumentServiceImpl implements UserDocumentService {
     }
 
     @Override
-    public List<UserDocument> findAllById(int id) {
+    public List<UserDocument> findAllByUserId(int id) {
         return userDocumentDao.findAllByUserId(id);
     }
 

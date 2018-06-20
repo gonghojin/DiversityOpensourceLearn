@@ -17,6 +17,9 @@ public class UserDocument {
     @Column(name = "description", length = 255)
     private String description;
 
+    @Column(name = "type", length = 100, nullable = false)
+    private String type;
+
     /**
      * file의 내용을 저장하기 위해서 byte[]를 사용.
      *
@@ -46,6 +49,14 @@ public class UserDocument {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
