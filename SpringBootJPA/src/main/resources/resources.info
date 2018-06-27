@@ -1,0 +1,6 @@
+이 디렉토리는 이름에서 알 수 있듯이, 모든 static resources, template 그리고 property 파일의 전용이다.
+    - resources/static : css, js, images와 같은 static resouces를 포함한다.
+    - resources/templates : 스프링에 의해 렌더링되는 서버 사이드 템플릿을 포함한다.
+    - resources/application.properties : 이 파일은 application의 전반적인 properties를 포함하기 때문에 아주!! 중요하다.
+                                          우리는 서버의 기본 port나 context 경로, database URL 등을 정의한다.
+                                          <설정 properties 참조> https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
