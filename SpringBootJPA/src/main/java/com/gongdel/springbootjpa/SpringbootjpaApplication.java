@@ -1,8 +1,17 @@
 package com.gongdel.springbootjpa;
 
+import com.gongdel.springbootjpa.domain.user.Gender;
+import com.gongdel.springbootjpa.domain.user.User;
+import com.gongdel.springbootjpa.domain.user.UserProfile;
+import com.gongdel.springbootjpa.repository.user.UserProfileRepository;
+import com.gongdel.springbootjpa.repository.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+import java.util.Calendar;
 
 /**
  * <JPA Auditing>
@@ -14,10 +23,41 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  */
 @EnableJpaAuditing
 @SpringBootApplication
-public class SpringbootjpaApplication {
+public class SpringbootjpaApplication implements CommandLineRunner {
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private UserProfileRepository userProfileRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootjpaApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// database table 정리
+		userProfileRepository.deleteAllInBatch();
+		userRepository.deleteAll();
+
+		User user = new User("hojin", "gong", "gongdel@gmail.com", "gongdel");
+		Calendar dateOfBirth = Calendar.getInstance();
+		dateOfBirth.set(1992, 2, 29);
+
+		// Create a UserProfile instance
+		UserProfile userProfile = new UserProfile("+91-8197882053", Gender.MALE, dateOfBirth.getTime(),
+				"747", "2nd Cross", "Golf View Road, Kodihalli", "Bangalore",
+				"Karnataka", "India", "560008");
+
+		// parent entity(user)에 child reference(userProfile) 설정
+		user.setUserProfile(userProfile);
+
+		// 반대 설정
+		userProfile.setUser(user);
+
+		// parent reference 저장(child 또한)
+		userRepository.save(user);
 	}
 }
 /**
