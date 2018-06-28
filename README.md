@@ -23,5 +23,6 @@
 * SpringJsonBinding(Object mapping)
 * SpringSecurityHelloWorldAnnotationExample(시큐리티 기초)
 * SpringSecurityCustomLoginFormAnnotationExample(시큐리티 + Hibernate)
-###스프링부트 배우기(원문:https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/ )
+------
+##### 스프링부트 배우기(원문:https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/ )
 * SpringBootJPA
