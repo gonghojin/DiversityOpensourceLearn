@@ -1,8 +1,6 @@
 package com.sample;
 
 import com.sample.config.ApplicationContextConfig;
-import com.sample.dao.TestDao;
-import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

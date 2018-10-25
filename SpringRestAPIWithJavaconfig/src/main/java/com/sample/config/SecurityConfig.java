@@ -1,5 +1,6 @@
 package com.sample.config;
 
+import com.sample.service.security.RestLoginSuccessHandler;
 import com.sample.service.security.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@ComponentScan("com.sample.config")
+@ComponentScan
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -21,9 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and().formLogin();
+                .authorizeRequests().anyRequest().authenticated()
+                .and()/*.httpBasic().and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);*/
+                .formLogin().loginProcessingUrl("/auth/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .successHandler(loginSuccessHandler());
+        ;
     }
 
     @Override
@@ -31,5 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService);
     }
 
+
+    private RestLoginSuccessHandler loginSuccessHandler() {
+        return new RestLoginSuccessHandler();
+    }
 
 }

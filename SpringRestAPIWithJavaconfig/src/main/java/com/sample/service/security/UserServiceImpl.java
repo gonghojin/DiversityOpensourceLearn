@@ -37,6 +37,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userMapper.readUser(username);
+        if (user == null) {
+            System.out.println("해당값 없음");
+        }
         user.setAuthorities(getAuthorities(username));
         return user;
 
