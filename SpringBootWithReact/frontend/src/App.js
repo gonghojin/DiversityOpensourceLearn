@@ -3,19 +3,19 @@ import PhoneForm from './components/PhoneForm';
 import PhoneInfoList from './components/PhoneInfoList';
 
 class App extends Component {
-    idx = 2
+    id = 2
 
     state = {
         information: [
             {
                 id: 0,
-                name : '김민준',
-                phone : '010-0000-0000'
+                name: '김민준',
+                phone: '010-0000-0000'
             },
             {
-                id : 1,
-                name : '홍길동',
-                phone : '010-0000-0001'
+                id: 1,
+                name: '홍길동',
+                phone: '010-0000-0001'
             }
         ]
     }
@@ -24,22 +24,31 @@ class App extends Component {
         const {information} = this.state;
         this.setState({
             information: information.concat({
-                idx : this.idx++,
+                id: this.id++,
                 ...data
             })
         });
         console.log(data);
     };
 
+    handleRemove = (id) => {
+        const {information} = this.state;
+        this.setState({
+            information: information.filter(info => info.id !== id)
+        });
+    }
+
     render() {
         const {information} = this.state;
         return [
             <div>
                 <PhoneForm onCreate={this.handleCreate}/>
-                {JSON.stringify(information)}
-                <PhoneInfoList data={information}/>
+                <PhoneInfoList
+                    data={information}
+                    onRemove = {this.handleRemove}
+                />
             </div>
-    ]
+        ]
     }
 }
 
