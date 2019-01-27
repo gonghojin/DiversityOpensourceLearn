@@ -43,12 +43,28 @@ class PhoneInfo extends Component {
         });
     }
 
+    // 새로운 데이터를 등록하고 나서, 기존의 info 데이더는 리렌더링이 필요하지 않음
+    // 새로운 데이터만 랜더링이 필요함
+   shouldComponentUpdate(nextProps, nextState) {
+        // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
+        if (!this.state.editing &&
+            !nextState.editing &&
+            nextProps.info === this.props.info
+        ) {
+            return false;
+        }
+
+        // 나머지 경우엔 리렌더링함
+        return true;
+    }
+
     componentDidUpdate(prevProps, prevState) {
         // 여기서는 editing값이 바뀔 때 처리할 로직이 적혀있다.
         // 수정을 눌렀을 땐, 기존의 값이 input에 나타나고,
         // 수정을 적용할 땐, input의 값들을 부모한테 전달해 준다.
         const {info, onUpdate} = this.props;
         if (!prevState.editing && this.state.editing) {
+            console.info("componentDidUpdate");
             // editing값이 true => false로 전환될 때
             // info의 값을 state에 넣어준다.
             this.setState({
@@ -66,7 +82,9 @@ class PhoneInfo extends Component {
         }
     }
 
+
     render() {
+        console.log("render PhoneInfo " + this.props.info.id);
         const style = {
             border: '1px solid black',
             padding: '8px',

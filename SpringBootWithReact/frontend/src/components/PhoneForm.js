@@ -18,6 +18,7 @@ class PhoneForm extends Component {
     }
 
     render() {
+        console.log("render PhoneForm");
         return (
             <form onSubmit={this.handleSubmit}>
                 <input placeholder="이름"
